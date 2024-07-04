@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import { logout, selectUser } from "./features/userSlice";
+import ErrorLayout from "./layouts/ErrorLayout";
+import MainRoutes from './routes/MainRoute'
+const { default: LoginLayout } = require("./layouts/LoginLayout");
+const parseJwt = (token) => {
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
+};
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const logOut = () => {
+    dispatch(logout());
+  };
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const decodedJwt = parseJwt(token);
+      if (decodedJwt.exp * 1000 < Date.now()) {
+        logOut();
+      }
+    }
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {user ? (
+        <>
+          <Routes>
+            <Route path="/*" element={<Sidebar children={<MainRoutes />} />} />
+            <Route path="/error" element={<ErrorLayout />} />
+          </Routes>
+        </>
+      ) : (
+        <LoginLayout />
+      )}
+    </>
   );
 }
 
