@@ -1,12 +1,8 @@
-import React from 'react';
-import LandingPageComponent from '../components/LandingPageComponent';
+import React from "react";
+import LandingPageComponent from "../components/LandingPageComponent";
 
 function MeetingsLayout(props) {
-    return (
-      <div>
-        <LandingPageComponent />
-      </div>
-    );
+  return <LandingPageComponent />;
 }
 
 export default MeetingsLayout;

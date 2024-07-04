@@ -3,6 +3,7 @@ import { withTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import meetingService from "../services/meetingService";
 import DateTimePicker from "./DateTimePicker";
+import { format } from "date-fns";
 
 function AddMeetingsFormComponent({ t }) {
   const handleSubmit = async (e) => {
@@ -12,8 +13,8 @@ function AddMeetingsFormComponent({ t }) {
       title: titleRef.current.value,
       description: descriptionRef.current.value,
       link: linkRef.current.value,
-      startTime: startTime,
-      endTime: endTime,
+      startTime: format(startTime, "dd-MM-yyyy HH:mm:ss"),
+      endTime: format(endTime, "dd-MM-yyyy HH:mm:ss"),
     };
     meetingService.addMeeting(bodyData).then((res) => {
       console.log(res.data);
@@ -35,9 +36,8 @@ function AddMeetingsFormComponent({ t }) {
     status: "",
   });
   useEffect(() => {
-    
     return () => {};
-  }, [startTime,endTime]);
+  }, [startTime, endTime]);
   useEffect(() => {
     if (id) {
       meetingService.getMeetingById(id).then((res) => {

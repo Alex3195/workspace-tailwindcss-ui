@@ -18,12 +18,12 @@ const addMeeting = (data) => {
     });
 };
 const updateMeeting = (data) => {
-  return axios.post(API_URL + "/meeting/update", data, {
+  return axios.put(API_URL + "/meeting/update", data, {
     headers: authHeader(),
   });
 };
 const deleteMeeting = (id) => {
-  return axios.post(API_URL + `/meeting/${id}`, {
+  return axios.delete(API_URL + `/meeting/${id}`, {
     headers: authHeader(),
   });
 };
