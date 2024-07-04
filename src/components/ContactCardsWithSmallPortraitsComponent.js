@@ -1,55 +1,46 @@
+import { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
+import employeeService from "../services/employeeService";
 
-const people = [
-  
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Leslie Alexander',
-    email: 'leslie.alexander@example.com',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  // More people...
-]
- function ContactCardsWithSmallPortraits({t}) {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+function ContactCardsWithSmallPortraits({ t }) {
+  const [children, setChildren] = useState([]);
+  const [update, setUpdate] = useState(false);
+
+  useEffect(() => {
+    if (update) {
+      employeeService.getEmployee().then((res) => {
+        setChildren(res.data);
+        setUpdate(false);
+      });
+    }
+    return () => {};
+  }, [update]);
+
+  useEffect(() => {
+    employeeService.getEmployee().then((res) => {
+      setChildren(res.data);
+    });
+    return () => {};
+  }, []);
+  useEffect(() => {
+    console.log(children);
+    return () => {};
+  }, [children]);
+
+  const handleDelete = async (id) => {
+    employeeService.deleteEmployee(id).then((res) => {
+      console.log(res.data);
+      setUpdate(true);
+    });
+  };
   return (
-    <div className="px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+    <div className="px-4 py-4">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
@@ -70,30 +61,87 @@ const people = [
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 sm:py-6 lg:py-8 ">
-        {people.map((person) => (
-          <div
-            key={person.email}
-            className="relative flex items-center px-6 py-5 space-x-3 bg-white border border-gray-300 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400"
-          >
-            <div className="flex-shrink-0">
-              <img
-                className="w-10 h-10 rounded-full"
-                src={person.imageUrl}
-                alt=""
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <a href="#" className="focus:outline-none">
-                <span className="absolute inset-0" aria-hidden="true" />
-                <p className="text-sm font-medium text-gray-900">
-                  {person.name}
-                </p>
-                <p className="text-sm text-gray-500 truncate">{person.role}</p>
-              </a>
-            </div>
-          </div>
-        ))}
+      <div className="px-4 py-4">
+        <ul role="list" className="divide-y divide-gray-100">
+          {children.map((person) => (
+            <li key={person.id} className="flex justify-between py-5 gap-x-6">
+              <div className="flex min-w-0 gap-x-4">
+                <img
+                  className="flex-none w-12 h-12 rounded-full bg-gray-50"
+                  src={
+                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  }
+                  alt=""
+                />
+                <div className="flex-auto min-w-0">
+                  <p className="text-sm font-semibold leading-6 text-gray-900">
+                    <a href={person.href} className="hover:underline">
+                      {person.firstName}
+                      {person.lastName}
+                    </a>
+                  </p>
+                  <p className="flex mt-1 text-xs leading-5 text-gray-500">
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="truncate hover:underline"
+                    >
+                      {person.email}
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center shrink-0 gap-x-6">
+                <div className="hidden sm:flex sm:flex-col sm:items-end">
+                  <p className="text-sm leading-6 text-gray-900">
+                    {person.position}
+                  </p>
+                </div>
+                <Menu as="div" className="relative flex-none">
+                  <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+                    <span className="sr-only">Open options</span>
+                    <EllipsisVerticalIcon
+                      className="w-5 h-5"
+                      aria-hidden="true"
+                    />
+                  </MenuButton>
+                  <MenuItems
+                    transition
+                    className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                  >
+                    <MenuItem>
+                      {({ focus }) => (
+                        <Link
+                          key={"edit"}
+                          to={`/employee/edit/${person.id}`}
+                          onClick={() => ({})}
+                          className={classNames(
+                            focus ? "bg-gray-50" : "",
+                            "block px-3 py-1 text-sm leading-6 text-gray-900"
+                          )}
+                        >
+                          {t(`Edit`)}
+                        </Link>
+                      )}
+                    </MenuItem>
+                    <MenuItem>
+                      {({ focus }) => (
+                        <div
+                          onClick={() => handleDelete(person.id)}
+                          className={classNames(
+                            focus ? "bg-gray-50" : "",
+                            "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
+                          )}
+                        >
+                          Delete
+                        </div>
+                      )}
+                    </MenuItem>
+                  </MenuItems>
+                </Menu>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

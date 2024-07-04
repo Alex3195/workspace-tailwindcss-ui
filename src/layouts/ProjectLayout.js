@@ -19,11 +19,7 @@ function ProjectLayout(props) {
   useEffect(() => {
     return () => {};
   }, [data, id]);
-  return (
-    <>
-      <LogosCardWithDescriptions children={data} id={id} />
-    </>
-  );
+  return <LogosCardWithDescriptions children={data} id={id} />;
 }
 
 export default ProjectLayout;

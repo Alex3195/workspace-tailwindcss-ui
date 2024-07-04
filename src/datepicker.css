@@ -1,0 +1,29 @@
+/* datepicker.css */
+
+.react-datepicker {
+    @apply bg-white border rounded-lg shadow-lg;
+  }
+  
+  .react-datepicker__header {
+    @apply text-white bg-blue-500;
+  }
+  
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range {
+    @apply text-white bg-blue-500;
+  }
+  
+  .react-datepicker__day--keyboard-selected {
+    @apply text-white bg-blue-700;
+  }
+  
+  .react-datepicker__time-container {
+    @apply bg-gray-100;
+  }
+  
+  .react-datepicker__current-month,
+  .react-datepicker-time__header {
+    @apply text-lg font-semibold;
+  }
+  

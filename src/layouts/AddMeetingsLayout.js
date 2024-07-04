@@ -3,9 +3,7 @@ import AddMeetingsFormComponent from '../components/AddMeetingsFormComponent';
 
 function AddMeetingsLayout(props) {
     return (
-      <div>
         <AddMeetingsFormComponent />
-      </div>
     );
 }
 

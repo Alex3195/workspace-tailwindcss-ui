@@ -3,9 +3,7 @@ import AddEmployeeFormComponent from '../components/AddEmployeeFormComponent';
 
 function AddEmployeeLayout(props) {
     return (
-      <>
         <AddEmployeeFormComponent />
-      </>
     );
 }
 

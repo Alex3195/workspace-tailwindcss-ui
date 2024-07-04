@@ -35,7 +35,6 @@ const DropdownLanguage = () => {
     i18next.changeLanguage(language);
   }, [language]);
   return (
-    <>
       <Menu as="div" className="relative ml-3">
         <div>
           <Menu.Button className="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -83,7 +82,6 @@ const DropdownLanguage = () => {
           </Menu.Items>
         </Transition>
       </Menu>
-    </>
   );
 };
 

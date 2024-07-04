@@ -19,12 +19,12 @@ const addProject = (data) => {
 };
 
 const updateProject = (data) => {
-    return axios.post(API_URL + "/project/update", data, {
+    return axios.put(API_URL + "/project/update", data, {
       headers: authHeader(),
     });
 };
 const deleteProject = (id) => {
-    return axios.post(API_URL + `/project/${id}`, {
+    return axios.delete(API_URL + `/project/${id}`, {
       headers: authHeader(),
     });
 };

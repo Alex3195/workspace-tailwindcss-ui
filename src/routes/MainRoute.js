@@ -11,20 +11,21 @@ import MeetingsLayout from "../layouts/MeetingsLayout";
 import ProjectLayout from "../layouts/ProjectLayout";
 const MainRoutes = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<DashboardLayout />} />
-        <Route path="/department" element={<DepartmentLayout />} />
-        <Route path="/department/add" element={<AddDepartmentLayout />} />
-        <Route path="/department/edit/:id" element={<AddDepartmentLayout />} />
-        <Route path="/project" element={<ProjectLayout />} />
-        <Route path="/project/add" element={<AddProjectLayout />} />
-        <Route path="/employee" element={<EmployeeLayout />} />
-        <Route path="/employee/add" element={<AddEmployeeLayout />} />
-        <Route path="/meeting" element={<MeetingsLayout />} />
-        <Route path="/meeting/add" element={<AddMeetingsLayout />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<DashboardLayout />} />
+      <Route path="/department" element={<DepartmentLayout />} />
+      <Route path="/department/add" element={<AddDepartmentLayout />} />
+      <Route path="/department/edit/:id" element={<AddDepartmentLayout />} />
+      <Route path="/project" element={<ProjectLayout />} />
+      <Route path="/project/add" element={<AddProjectLayout />} />
+      <Route path="/project/edit/:id" element={<AddProjectLayout />} />
+      <Route path="/employee" element={<EmployeeLayout />} />
+      <Route path="/employee/add" element={<AddEmployeeLayout />} />
+      <Route path="/employee/edit/:id" element={<AddEmployeeLayout />} />
+      <Route path="/meeting" element={<MeetingsLayout />} />
+      <Route path="/meeting/add" element={<AddMeetingsLayout />} />
+      <Route path="/meeting/edit/:id" element={<AddMeetingsLayout />} />
+    </Routes>
   );
 };
 

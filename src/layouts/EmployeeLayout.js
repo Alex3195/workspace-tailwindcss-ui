@@ -1,12 +1,8 @@
-import React from 'react';
-import ContactCardsWithSmallPortraits from '../components/ContactCardsWithSmallPortraitsComponent';
-
+import React from "react";
+import ContactCardsWithSmallPortraits from "../components/ContactCardsWithSmallPortraitsComponent";
 function EmployeeLayout(props) {
-    return (
-      <>
-        <ContactCardsWithSmallPortraits />
-      </>
-    );
+  
+  return <ContactCardsWithSmallPortraits  />;
 }
 
 export default EmployeeLayout;

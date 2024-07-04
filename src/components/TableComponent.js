@@ -1,16 +1,37 @@
+import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
+import { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
+import { Link, useNavigate } from "react-router-dom";
+import departmentService from "../services/departmentService";
 
-function TableComponent({ t, children }) {
+function TableComponent({ t }) {
+  const navigate = useNavigate();
+  const [update, setUpdate] = useState(false);
+  const [children, setChildren] = useState([]);
+  useEffect(() => {
+    departmentService.getDepartments().then((res) => {
+      setChildren(res.data);
+    });
+    return () => {};
+  }, []);
+  useEffect(() => {
+    if (update) {
+      departmentService.getDepartments().then((res) => {
+        setChildren(res.data);
+        setUpdate(false);
+      });
+    }
+    return () => {};
+  }, [update]);
+  useEffect(() => {
+    return () => {};
+  }, [children]);
+
+  const handleDelete = async (id) => {
+    departmentService.deleteDepartment(id).then((res) => {
+      setUpdate(true);
+    });
+  };
   return (
     <div className="px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
       <div className="sm:flex sm:items-center">
@@ -66,14 +87,37 @@ function TableComponent({ t, children }) {
                       {person.description}
                     </td>
                     <td className="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-0">
-                      <Link
-                        key={"Add"}
-                        to={`/department/edit/${person.id}`}
-                        onClick={() => ({})}
-                        className="text-indigo-600 hover:text-indigo-900"
-                      >
-                        {t(`Edit`)}
-                      </Link>
+                      <div className="flex justify-between w-12">
+                        <button
+                          type="button"
+                          className="inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          <PencilIcon
+                            className="-ml-0.4 h-4 w-4"
+                            aria-hidden="true"
+                          />
+                          <Link
+                            key={"edit"}
+                            to={`/department/edit/${person.id}`}
+                            className="text-white"
+                          >
+                            {t(`Edit`)}
+                            <span className="sr-only">, {person.name}</span>
+                          </Link>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(person.id)}
+                          className=" mx-2 inline-flex items-center gap-x-2 rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          <TrashIcon
+                            className="-ml-0.4 h-4 w-4"
+                            aria-hidden="true"
+                          />
+                          {t(`Edit`)}
+                          <span className="sr-only">, {person.name}</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

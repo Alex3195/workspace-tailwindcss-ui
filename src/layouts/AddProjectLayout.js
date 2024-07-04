@@ -1,12 +1,8 @@
-import React from 'react';
-import AddProjectFormComponent from '../components/AddProjectFormComponent';
+import React from "react";
+import AddProjectFormComponent from "../components/AddProjectFormComponent";
 
 function AddProjectLayout(props) {
-    return (
-      <>
-        <AddProjectFormComponent />
-      </>
-    );
+  return <AddProjectFormComponent />;
 }
 
 export default AddProjectLayout;

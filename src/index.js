@@ -8,7 +8,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 let persistor = persistStore(store);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

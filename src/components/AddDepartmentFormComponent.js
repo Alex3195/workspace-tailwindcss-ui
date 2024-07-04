@@ -1,46 +1,44 @@
 import { useEffect, useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
 import departmentService from "../services/departmentService";
+import { useParams } from "react-router-dom";
 
-function AddDepartmentFormComponent({ t, id }) {
+function AddDepartmentFormComponent({ t }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const { id } = useParams();
+  const [data, setData] = useState({ name: "", description: "" });
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const data = JSON.stringify({
-      id: id,
-      name: nameRef.current.value,
-      description: descriptionRef.current.value,
-    });
-    departmentService
-      .addDepartment(data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const data = JSON.stringify({
+        id: id || null,
+        name: nameRef.current.value,
+        description: descriptionRef.current.value,
       });
-  };
-  useEffect(() => {
-    return () => {};
-  }, [name, description]);
-  useEffect(() => {
-    if (id) {
       departmentService
-        .getDepartmentById(id)
+        .addDepartment(data)
         .then((res) => {
-          setName(res.data.name);
-          setDescription(res.data.description);
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);
         });
+    } catch (err) {
+      console.log(err.message);
     }
-
+  };
+  useEffect(() => {
+    if (id) {
+      console.log(id);
+      departmentService.getDepartmentById(id).then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      });
+    }
     return () => {};
   }, [id]);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -70,7 +68,7 @@ function AddDepartmentFormComponent({ t, id }) {
                   id="first-name"
                   autoComplete="given-name"
                   ref={nameRef}
-                  defaultValue={name}
+                  defaultValue={data.name}
                   className="block w-full max-w-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -90,7 +88,7 @@ function AddDepartmentFormComponent({ t, id }) {
                   rows={3}
                   ref={descriptionRef}
                   className="block w-full max-w-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={description}
+                  defaultValue={data.description}
                 />
                 <p className="mt-3 text-sm leading-6 text-gray-600">
                   Write a few sentences about department.

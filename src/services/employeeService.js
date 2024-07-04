@@ -18,12 +18,12 @@ const addEmployee = (data) => {
     });
 };
 const updateEmployee = (data) => {
-  return axios.post(API_URL + "/employee/update", data, {
+  return axios.put(API_URL + "/employee/update", data, {
     headers: authHeader(),
   });
 };
 const deleteEmployee = (id) => {
-  return axios.post(API_URL + `/employee/${id}`, {
+  return axios.delete(API_URL + `/employee/${id}`, {
     headers: authHeader(),
   });
 };
