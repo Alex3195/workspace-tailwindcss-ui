@@ -18,10 +18,24 @@ const addDepartment = (data) => {
     });
 };
 
+const updateDepartment = (data) => {
+    return axios.put(API_URL + "/department/update", data, {
+      headers: authHeader(),
+    });
+};
+
+const deleteDepartment = (id) => {
+    return axios.delete(API_URL + `/department/${id}`, {
+      headers: authHeader(),
+    });
+};
+
 
 
 export default {
   getDepartmentById,
   getDepartments,
   addDepartment,
+  updateDepartment,
+  deleteDepartment,
 };

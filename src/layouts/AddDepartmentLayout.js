@@ -1,12 +1,14 @@
-import React from 'react';
-import AddDepartmentFormComponent from '../components/AddDepartmentFormComponent';
+import React from "react";
+import AddDepartmentFormComponent from "../components/AddDepartmentFormComponent";
+import { useParams } from "react-router-dom";
 
 function AddDepartmentLayout(props) {
-    return (
-      <>
-        <AddDepartmentFormComponent />
-      </>
-    );
+  const { id } = useParams();
+  return (
+    <>
+      <AddDepartmentFormComponent id={id} />
+    </>
+  );
 }
 
 export default AddDepartmentLayout;

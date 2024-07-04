@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid'
 import { withTranslation } from 'react-i18next';
@@ -34,7 +34,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
- function LogosCardWithDescriptions({t}) {
+ function LogosCardWithDescriptions({t,children}) {
+  useEffect(() => {
+    console.log(children);
+    return () => {};
+  }, [children]);
    return (
      <div className="px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
        <div className="sm:flex sm:items-center">
@@ -62,14 +66,14 @@ function classNames(...classes) {
            role="list"
            className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8"
          >
-           {clients.map((client) => (
+           {children.map((client) => (
              <li
                key={client.id}
                className="overflow-hidden border border-gray-200 rounded-xl"
              >
                <div className="flex items-center p-6 border-b gap-x-4 border-gray-900/5 bg-gray-50">
                  <img
-                   src={client.imageUrl}
+                   src={"https://tailwindui.com/img/logos/48x48/tuple.svg"}
                    alt={client.name}
                    className="flex-none object-cover w-12 h-12 bg-white rounded-lg ring-1 ring-gray-900/10"
                  />
@@ -119,26 +123,54 @@ function classNames(...classes) {
                </div>
                <dl className="px-6 py-4 -my-3 text-sm leading-6 divide-y divide-gray-100">
                  <div className="flex justify-between py-3 gap-x-4">
-                   <dt className="text-gray-500">Last invoice</dt>
-                   <dd className="text-gray-700">
-                     <time dateTime={client.lastInvoice.dateTime}>
-                       {client.lastInvoice.date}
-                     </time>
-                   </dd>
-                 </div>
-                 <div className="flex justify-between py-3 gap-x-4">
-                   <dt className="text-gray-500">Amount</dt>
+                   <dt className="text-gray-500">Budget sum</dt>
                    <dd className="flex items-start gap-x-2">
                      <div className="font-medium text-gray-900">
-                       {client.lastInvoice.amount}
+                       {client.budgetSum}
                      </div>
                      <div
                        className={classNames(
-                         statuses[client.lastInvoice.status],
+                         statuses["Paid"],
                          "rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset"
                        )}
                      >
-                       {client.lastInvoice.status}
+                       Paid
+                     </div>
+                   </dd>
+                 </div>
+               </dl>
+               <dl className="px-6 py-4 -my-3 text-sm leading-6 divide-y divide-gray-100">
+                 <div className="flex justify-between py-3 gap-x-4">
+                   <dt className="text-gray-500">Spent sum</dt>
+                   <dd className="flex items-start gap-x-2">
+                     <div className="font-medium text-gray-900">
+                       {client.spentSum}
+                     </div>
+                     <div
+                       className={classNames(
+                         statuses["Overdue"],
+                         "rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset"
+                       )}
+                     >
+                       Overdue
+                     </div>
+                   </dd>
+                 </div>
+               </dl>
+               <dl className="px-6 py-4 -my-3 text-sm leading-6 divide-y divide-gray-100">
+                 <div className="flex justify-between py-3 gap-x-4">
+                   <dt className="text-gray-500">Residual sum</dt>
+                   <dd className="flex items-start gap-x-2">
+                     <div className="font-medium text-gray-900">
+                       {client.residualSum}
+                     </div>
+                     <div
+                       className={classNames(
+                         statuses["Withdraw"],
+                         "rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset"
+                       )}
+                     >
+                       Withdraw
                      </div>
                    </dd>
                  </div>

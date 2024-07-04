@@ -1,13 +1,23 @@
-import React from 'react';
-import ActionsWithSharedBordersComponent from '../components/ActionsWithSharedBordersComponent';
-import TableComponent from '../components/TableComponent';
+import React, { useEffect, useState } from "react";
+import TableComponent from "../components/TableComponent";
+import departmentService from "../services/departmentService";
 
 function DepartmentLayout(props) {
-    return (
-      <>
-        <TableComponent />
-      </>
-    );
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    departmentService.getDepartments().then((res) => {
+      setData(res.data);
+    });
+    return () => {};
+  }, []);
+  useEffect(() => {
+    return () => {};
+  }, [data]);
+  return (
+    <>
+      <TableComponent children={data} />
+    </>
+  );
 }
 
 export default DepartmentLayout;
