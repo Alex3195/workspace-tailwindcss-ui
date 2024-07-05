@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
 import departmentService from "../services/departmentService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function AddDepartmentFormComponent({ t }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
   const { id } = useParams();
   const [data, setData] = useState({ name: "", description: "" });
+  const navigate = useNavigate();
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -19,7 +20,7 @@ function AddDepartmentFormComponent({ t }) {
       departmentService
         .addDepartment(data)
         .then((res) => {
-          console.log(res);
+          navigate("/department");
         })
         .catch((err) => {
           console.log(err);
