@@ -1,14 +1,22 @@
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
+  BanknotesIcon,
   Bars3BottomLeftIcon,
+  BellIcon,
   BuildingOffice2Icon,
+  CalendarDaysIcon,
+  ChartPieIcon,
+  CogIcon,
+  DocumentChartBarIcon,
+  HomeIcon,
   MagnifyingGlassIcon,
   PresentationChartBarIcon,
+  RectangleGroupIcon,
+  ShieldCheckIcon,
   SignalIcon,
   UserGroupIcon,
-  XMarkIcon,
+  XMarkIcon
 } from "@heroicons/react/20/solid";
-import { HomeIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
 import { withTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -17,6 +25,12 @@ import { logout } from "../features/userSlice";
 import DropdownLanguage from "./DropdownLanguage";
 const navigation = [
   { name: "sidebar_menu_dashboard", to: "/", icon: HomeIcon },
+  { name: "sidebar_menu_roles", to: "/role", icon: RectangleGroupIcon },
+  {
+    name: "sidebar_menu_access_control",
+    to: "/access-control",
+    icon: ShieldCheckIcon,
+  },
   {
     name: "sidebar_menu_department",
     to: "/department",
@@ -29,6 +43,12 @@ const navigation = [
   },
   { name: "sidebar_menu_employee", to: "/employee", icon: UserGroupIcon },
   { name: "sidebar_menu_meeting", to: "/meeting", icon: SignalIcon },
+  { name: "sidebar_menu_task", to: "/task", icon: DocumentChartBarIcon },
+  { name: "sidebar_menu_finance", to: "/finance", icon: BanknotesIcon },
+  { name: "sidebar_menu_notifications", to: "/notifications", icon: BellIcon },
+  { name: "sidebar_menu_calendar", to: "/calendar", icon: CalendarDaysIcon },
+  { name: "sidebar_menu_report", to: "/report", icon: ChartPieIcon },
+  { name: "sidebar_menu_setting", to: "/setting", icon: CogIcon },
 ];
 
 const userNavigation = [

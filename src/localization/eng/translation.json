@@ -17,6 +17,14 @@
   "sidebar_menu_project": "Projects",
   "sidebar_menu_employee": "Employee",
   "sidebar_menu_meeting": "Meetings",
+  "sidebar_menu_setting": "Settings",
+  "sidebar_menu_roles": "User roles",
+  "sidebar_menu_access_control": "Access control",
+  "sidebar_menu_finance": "Finance",
+  "sidebar_menu_notifications": "Notification",
+  "sidebar_menu_calendar": "Calendar",
+  "sidebar_menu_report": "Reports",
+  "sidebar_menu_task": "Tasks",
   "id": "№",
   "name": "Name",
   "symbol": "Symbol",
@@ -227,7 +235,6 @@
   "list_furniture": "List furniture",
   "new_furniture": "Create furniture",
   "update_furniture": "Update furniture",
-  "furniture_specification":"Specification furniture",
-  "add_furniture_specification":"Add specification furniture"
-
+  "furniture_specification": "Specification furniture",
+  "add_furniture_specification": "Add specification furniture"
 }

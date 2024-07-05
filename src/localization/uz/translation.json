@@ -17,6 +17,14 @@
   "sidebar_menu_project": "Loyihalar",
   "sidebar_menu_employee": "Hodimlar",
   "sidebar_menu_meeting": "Uchrashuvlar",
+  "sidebar_menu_setting": "Sozlamalar",
+  "sidebar_menu_roles": "Foydalanuvchi rollari",
+  "sidebar_menu_access_control": "Kirish nazorati",
+  "sidebar_menu_finance": "Moliya",
+  "sidebar_menu_notifications": "Bildirishnomalar",
+  "sidebar_menu_calendar": "Kalendar",
+  "sidebar_menu_report": "Hisobot",
+  "sidebar_menu_task": "Vazifalar",
   "id": "№",
   "name": "Nomi",
   "symbol": "Belgi",
@@ -226,7 +234,6 @@
   "list_furniture": "Furnituralar jadvali",
   "new_furniture": "Furnitura yaratish",
   "update_furniture": "Furniturani yangilash",
-  "furniture_specification":"Спецификация фурнитуре",
-  "add_furniture_specification":"Добавить спецификация фурнитуре"
-
+  "furniture_specification": "Спецификация фурнитуре",
+  "add_furniture_specification": "Добавить спецификация фурнитуре"
 }
