@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import { logout, selectUser } from "./features/userSlice";
 import ErrorLayout from "./layouts/ErrorLayout";
-import MainRoutes from './routes/MainRoute'
+import MainRoutes from "./routes/MainRoute";
 const { default: LoginLayout } = require("./layouts/LoginLayout");
 const parseJwt = (token) => {
   try {
@@ -30,13 +30,11 @@ function App() {
   }, []);
   return (
     <>
-    {user ? (
-        <>
-          <Routes>
-            <Route path="/*" element={<Sidebar children={<MainRoutes />} />} />
-            <Route path="/error" element={<ErrorLayout />} />
-          </Routes>
-        </>
+      {user ? (
+        <Routes>
+          <Route path="/*" element={<Sidebar children={<MainRoutes />} />} />
+          <Route path="/error" element={<ErrorLayout />} />
+        </Routes>
       ) : (
         <LoginLayout />
       )}

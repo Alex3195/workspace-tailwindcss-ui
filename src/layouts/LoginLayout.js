@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
-
+import logo from "../assets/img/wayll_rounded.png";
 const parseJwt = (token) => {
   try {
     return JSON.parse(atob(token.split(".")[1]));
@@ -47,22 +47,11 @@ export default function LoginLayout() {
       <div className="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
-            className="w-auto h-12 mx-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+            className="w-auto h-24 mx-auto"
+            src={logo}
             alt="Workflow"
           />
-          <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
-            Sign in to your account
-          </h2>
-          <p className="mt-2 text-sm text-center text-gray-600">
-            Or
-            <a
-              href="/"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              start your 14-day free trial
-            </a>
-          </p>
+          
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

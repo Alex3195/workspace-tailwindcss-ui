@@ -15,7 +15,7 @@ import {
   ShieldCheckIcon,
   SignalIcon,
   UserGroupIcon,
-  XMarkIcon
+  XMarkIcon,
 } from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
 import { withTranslation } from "react-i18next";
@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logout } from "../features/userSlice";
 import DropdownLanguage from "./DropdownLanguage";
+import logo from "../assets/img/wayll_rounded.png";
 const navigation = [
   { name: "sidebar_menu_dashboard", to: "/", icon: HomeIcon },
   { name: "sidebar_menu_roles", to: "/role", icon: RectangleGroupIcon },
@@ -132,11 +133,7 @@ function Sidebar({ t, children }) {
                   </div>
                 </Transition.Child>
                 <div className="flex items-center flex-shrink-0 px-4">
-                  <img
-                    className="w-auto h-8"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Construction"
-                  />
+                  <img className="w-auto h-8" src={logo} alt="Wayll" />
                   <h2 className="pl-2 text-lg font-extrabold text-white">
                     WorkSpace
                   </h2>
@@ -183,11 +180,7 @@ function Sidebar({ t, children }) {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-col flex-1 min-h-0 bg-gray-800">
           <div className="flex items-center flex-shrink-0 h-16 px-4 bg-gray-900">
-            <img
-              className="w-auto h-8"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt="Construction"
-            />
+            <img className="w-auto h-8" src={logo} alt="Construction" />
             <h2 className="pl-2 text-lg font-extrabold text-white">
               WorkSpace
             </h2>
@@ -215,7 +208,6 @@ function Sidebar({ t, children }) {
                     )}
                     aria-hidden="true"
                   />
-                  {/* {} */}
                   {t(`${item.name}`)}
                 </Link>
               ))}
