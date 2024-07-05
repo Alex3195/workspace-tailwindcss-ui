@@ -135,7 +135,7 @@ function Sidebar({ t, children }) {
                 <div className="flex items-center flex-shrink-0 px-4">
                   <img className="w-auto h-8" src={logo} alt="Wayll" />
                   <h2 className="pl-2 text-lg font-extrabold text-white">
-                    Wayll workspace
+                    Workspace
                   </h2>
                 </div>
                 <div className="flex-1 h-0 mt-5 overflow-y-auto">
@@ -182,7 +182,7 @@ function Sidebar({ t, children }) {
           <div className="flex items-center flex-shrink-0 h-16 px-4 bg-gray-900">
             <img className="w-auto h-8" src={logo} alt="Construction" />
             <h2 className="pl-2 text-lg font-extrabold text-white">
-              Wayll workspace
+              Workspace
             </h2>
           </div>
           <div className="flex flex-col flex-1 overflow-y-auto">
