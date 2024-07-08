@@ -62,7 +62,7 @@ function ContactCardsWithSmallPortraits({ t }) {
         </div>
       </div>
       <div className="px-4 py-4">
-        <ul role="list" className="divide-y divide-gray-100">
+        <ul className="divide-y divide-gray-100">
           {children.map((person) => (
             <li key={person.id} className="flex justify-between py-5 gap-x-6">
               <div className="flex min-w-0 gap-x-4">

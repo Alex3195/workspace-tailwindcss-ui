@@ -21,7 +21,7 @@ function InlineLinksAndAction({ t }) {
   useEffect(() => {
     navigate("/meeting");
     return () => {};
-  }, [meetings]);
+  }, [meetings, navigate]);
   const handleDelete = async (id) => {
     meetingService.deleteMeeting(id).then((res) => {
       const modifiedArray = meetings.splice(

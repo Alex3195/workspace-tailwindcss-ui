@@ -62,7 +62,7 @@ function AddProjectFormComponent({ t }) {
       setLeadersArray(res.data);
     });
     return () => {};
-  }, []);
+  }, [id]);
   useEffect(() => {
     console.log(data);
     return () => {};
@@ -187,7 +187,7 @@ function AddProjectFormComponent({ t }) {
       <div className="flex items-center justify-end mt-6 gap-x-6">
         <button
           type="button"
-          onClick={onCancel}
+          onClick={() => onCancel()}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel

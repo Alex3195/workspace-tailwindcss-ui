@@ -1,11 +1,10 @@
 import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import departmentService from "../services/departmentService";
 
 function TableComponent({ t }) {
-  const navigate = useNavigate();
   const [update, setUpdate] = useState(false);
   const [children, setChildren] = useState([]);
   useEffect(() => {
