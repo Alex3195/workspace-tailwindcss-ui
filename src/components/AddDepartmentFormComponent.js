@@ -17,14 +17,25 @@ function AddDepartmentFormComponent({ t }) {
         name: nameRef.current.value,
         description: descriptionRef.current.value,
       });
-      departmentService
-        .addDepartment(data)
-        .then((res) => {
-          navigate("/department");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (id) {
+        departmentService
+          .updateDepartment(data)
+          .then((res) => {
+            navigate("/department");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        departmentService
+          .addDepartment(data)
+          .then((res) => {
+            navigate("/department");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } catch (err) {
       console.log(err.message);
     }

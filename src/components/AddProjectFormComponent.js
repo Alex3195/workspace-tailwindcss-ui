@@ -17,21 +17,32 @@ function AddProjectFormComponent({ t }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      id: id,
+      id: id || null,
       name: titleRef.current.value,
       responsibleLeaderId: leaderIdRef.current.value,
       budgetSum: budgetSumRef.current.value,
       spentSum: spentSumRef.current.value,
       residualSum: residualRef.current.value,
     };
-    projectService
-      .addProject(data)
-      .then((res) => {
-        navigate("/project");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (id) {
+      projectService
+        .updateProject(data)
+        .then((res) => {
+          navigate("/project");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      projectService
+        .addProject(data)
+        .then((res) => {
+          navigate("/project");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   useEffect(() => {
     if (id) {

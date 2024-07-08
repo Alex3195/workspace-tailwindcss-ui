@@ -23,19 +23,31 @@ function AddEmployeeFormComponent({ t }) {
     evt.preventDefault();
     try {
       const data = JSON.stringify({
+        id: id || null,
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         email: emailRef.current.value,
         phone: phoneRef.current.value,
       });
-      employeeService
-        .addEmployee(data)
-        .then((res) => {
-          navigate("/employee");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (id) {
+        employeeService
+          .updateEmployee(data)
+          .then((res) => {
+            navigate("/employee");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        employeeService
+          .addEmployee(data)
+          .then((res) => {
+            navigate("/employee");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } catch (err) {
       console.log(err.message);
     }

@@ -1,25 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import meetingService from "../services/meetingService";
 import DateTimePicker from "./DateTimePicker";
 import { format } from "date-fns";
 
 function AddMeetingsFormComponent({ t }) {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const bodyData = {
-      id: id || null,
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      link: linkRef.current.value,
-      startTime: format(startTime, "dd-MM-yyyy HH:mm:ss"),
-      endTime: format(endTime, "dd-MM-yyyy HH:mm:ss"),
-    };
-    meetingService.addMeeting(bodyData).then((res) => {
-      console.log(res.data);
-    });
-  };
   const { id } = useParams();
   const titleRef = useRef();
   const descriptionRef = useRef();
@@ -35,6 +21,28 @@ function AddMeetingsFormComponent({ t }) {
     endTime: "",
     status: "",
   });
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const bodyData = {
+      id: id || null,
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      link: linkRef.current.value,
+      startTime: format(startTime, "dd-MM-yyyy HH:mm:ss"),
+      endTime: format(endTime, "dd-MM-yyyy HH:mm:ss"),
+    };
+    if (id) {
+      meetingService.updateMeeting(bodyData).then((res) => {
+        navigate('/meeting')
+      });
+    } else {
+      meetingService.addMeeting(bodyData).then((res) => {
+        navigate("/meeting");
+      });
+    }
+  };
+
   useEffect(() => {
     return () => {};
   }, [startTime, endTime]);
