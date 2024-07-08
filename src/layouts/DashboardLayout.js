@@ -3,7 +3,7 @@ import { withTranslation } from "react-i18next";
 const posts = [
   {
     id: 1,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_department",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -22,7 +22,7 @@ const posts = [
   },
   {
     id: 2,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_project",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -41,7 +41,7 @@ const posts = [
   },
   {
     id: 3,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_employee",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -60,7 +60,7 @@ const posts = [
   },
   {
     id: 4,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_meeting",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -79,7 +79,7 @@ const posts = [
   },
   {
     id: 5,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_finance",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -98,7 +98,7 @@ const posts = [
   },
   {
     id: 6,
-    title: "Boost your conversion rate",
+    title: "sidebar_menu_report",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
@@ -118,24 +118,17 @@ const posts = [
   // More posts...
 ];
 
-const stats = [
-  { id: 1, name: "Creators on the platform", value: "8,000+" },
-  { id: 2, name: "Flat platform fee", value: "3%" },
-  { id: 3, name: "Uptime guarantee", value: "99.9%" },
-  { id: 4, name: "Paid out to creators", value: "$70M" },
-];
-
-function DashboardLayout() {
+function DashboardLayout({ t }) {
   return (
     <div className="px-12 ">
       <div className="py-12 bg-white sm:py-16">
         <div className="px-6 mx-auto max-w-7xl lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              From the blog
+              {t("title_dashboard")}
             </h2>
             <p className="mt-2 text-lg leading-8 text-gray-600">
-              Learn how to grow your business with our expert advice.
+              {t("under_title_dashboard")}
             </p>
           </div>
           <div className="grid max-w-2xl grid-cols-1 mx-auto mt-16 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-6">
@@ -157,7 +150,7 @@ function DashboardLayout() {
                     <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                       <a href={post.href}>
                         <span className="absolute inset-0" />
-                        {post.title}
+                        {t(`${post.title}`)}
                       </a>
                     </h3>
                   </div>
@@ -167,7 +160,6 @@ function DashboardLayout() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
