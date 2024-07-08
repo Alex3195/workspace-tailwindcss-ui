@@ -14,6 +14,9 @@ function AddProjectFormComponent({ t }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
+  const onCancel = () => {
+    navigate("/project");
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -184,6 +187,7 @@ function AddProjectFormComponent({ t }) {
       <div className="flex items-center justify-end mt-6 gap-x-6">
         <button
           type="button"
+          onClick={onCancel}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel

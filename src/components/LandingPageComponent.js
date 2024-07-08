@@ -2,7 +2,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import meetingService from "../services/meetingService";
 
 function classNames(...classes) {
@@ -11,6 +11,7 @@ function classNames(...classes) {
 
 function InlineLinksAndAction({ t }) {
   const [meetings, setMeetings] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     meetingService.getMeeting().then((res) => {
       setMeetings(res.data);
@@ -18,12 +19,16 @@ function InlineLinksAndAction({ t }) {
     return () => {};
   }, []);
   useEffect(() => {
-    console.log("sdasd", meetings);
+    navigate("/meeting");
     return () => {};
   }, [meetings]);
   const handleDelete = async (id) => {
     meetingService.deleteMeeting(id).then((res) => {
-      console.log(res);
+      const modifiedArray = meetings.splice(
+        meetings.find((x) => x.id === id),
+        1
+      );
+      setMeetings(modifiedArray);
     });
   };
   return (
@@ -52,7 +57,7 @@ function InlineLinksAndAction({ t }) {
               <div className="flex min-w-0 gap-x-4">
                 <div className="flex-auto min-w-0">
                   <p className="text-sm font-semibold leading-6 text-gray-900 cursor-pointer hover:underline">
-                  {item.title}
+                    {item.title}
                   </p>
                   <p className="flex mt-1 text-xs leading-5 text-gray-500">
                     <a href={item.link} className="truncate hover:underline">

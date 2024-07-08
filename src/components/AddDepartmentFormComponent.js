@@ -9,6 +9,9 @@ function AddDepartmentFormComponent({ t }) {
   const { id } = useParams();
   const [data, setData] = useState({ name: "", description: "" });
   const navigate = useNavigate();
+  const onCancel = () => {
+    navigate("/department");
+  };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -114,6 +117,7 @@ function AddDepartmentFormComponent({ t }) {
       <div className="flex items-center justify-end mt-6 gap-x-6">
         <button
           type="button"
+          onClick={() => onCancel()}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel

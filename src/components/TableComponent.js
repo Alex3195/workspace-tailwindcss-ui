@@ -114,7 +114,7 @@ function TableComponent({ t }) {
                             className="-ml-0.4 h-4 w-4"
                             aria-hidden="true"
                           />
-                          {t(`Edit`)}
+                          {t(`Delete`)}
                           <span className="sr-only">, {person.name}</span>
                         </button>
                       </div>

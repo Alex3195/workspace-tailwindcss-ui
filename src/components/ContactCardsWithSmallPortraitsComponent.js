@@ -116,7 +116,7 @@ function ContactCardsWithSmallPortraits({ t }) {
                           onClick={() => ({})}
                           className={classNames(
                             focus ? "bg-gray-50" : "",
-                            "block px-3 py-1 text-sm leading-6 text-gray-900"
+                            "block px-3 py-1 text-sm text-center leading-6 text-gray-900"
                           )}
                         >
                           {t(`Edit`)}
@@ -125,15 +125,15 @@ function ContactCardsWithSmallPortraits({ t }) {
                     </MenuItem>
                     <MenuItem>
                       {({ focus }) => (
-                        <div
+                        <button
                           onClick={() => handleDelete(person.id)}
                           className={classNames(
                             focus ? "bg-gray-50" : "",
-                            "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
+                            "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer w-full"
                           )}
                         >
                           Delete
-                        </div>
+                        </button>
                       )}
                     </MenuItem>
                   </MenuItems>

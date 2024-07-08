@@ -12,6 +12,7 @@ function RoleFrom({ t }) {
   const navigateToTable = () => {
     navigate("/role");
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
@@ -100,6 +101,7 @@ function RoleFrom({ t }) {
         <div className="flex items-center justify-end mt-6 gap-x-6">
           <button
             type="button"
+            onClick={navigateToTable}
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Cancel

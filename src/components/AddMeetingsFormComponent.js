@@ -22,6 +22,9 @@ function AddMeetingsFormComponent({ t }) {
     status: "",
   });
   const navigate = useNavigate();
+  const onCancel = () => {
+    navigate("/meeting");
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const bodyData = {
@@ -34,7 +37,7 @@ function AddMeetingsFormComponent({ t }) {
     };
     if (id) {
       meetingService.updateMeeting(bodyData).then((res) => {
-        navigate('/meeting')
+        navigate("/meeting");
       });
     } else {
       meetingService.addMeeting(bodyData).then((res) => {
@@ -167,6 +170,7 @@ function AddMeetingsFormComponent({ t }) {
       <div className="flex items-center justify-end mt-6 gap-x-6">
         <button
           type="button"
+          onClick={onCancel}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel
