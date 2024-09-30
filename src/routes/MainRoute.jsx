@@ -11,6 +11,7 @@ import MeetingsLayout from "../layouts/MeetingsLayout";
 import ProjectLayout from "../layouts/ProjectLayout";
 import RolesLayout from "../layouts/RolesLayout";
 import AddRolesLayout from "../layouts/AddRolesLayout";
+import SpecialDashBoardLayout from "../layouts/SpecialDashBoardLayout";
 const MainRoutes = () => {
   return (
     <Routes>
@@ -30,6 +31,7 @@ const MainRoutes = () => {
       <Route path="/role" element={<RolesLayout />} />
       <Route path="/role/add" element={<AddRolesLayout />} />
       <Route path="/role/edit/:id" element={<AddDepartmentLayout />} />
+      <Route path="/special" element={<SpecialDashBoardLayout />} />
     </Routes>
   );
 };
