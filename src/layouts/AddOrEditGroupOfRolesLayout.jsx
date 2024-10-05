@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
-import departmentService from "../services/departmentService";
 import { useNavigate, useParams } from "react-router-dom";
+import groupOfRolesService from "../services/groupOfRolesService";
 
-function AddDepartmentFormComponent({ t }) {
+function AddOrEditGroupOfRolesLayout({ t }) {
   const nameRef = useRef();
   const descriptionRef = useRef();
   const { id } = useParams();
   const [data, setData] = useState({ name: "", description: "" });
   const navigate = useNavigate();
   const onCancel = () => {
-    navigate("/department");
+    navigate("/group-of-role");
   };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -21,19 +21,19 @@ function AddDepartmentFormComponent({ t }) {
         description: descriptionRef.current.value,
       });
       if (id) {
-        departmentService
-          .updateDepartment(data)
+        groupOfRolesService
+          .updateGroupOfRole(data)
           .then((res) => {
-            navigate("/department");
+            navigate("/group-of-role");
           })
           .catch((err) => {
             console.log(err);
           });
       } else {
-        departmentService
-          .addDepartment(data)
+        groupOfRolesService
+          .addGroupOfRole(data)
           .then((res) => {
-            navigate("/department");
+            navigate("/group-of-role");
           })
           .catch((err) => {
             console.log(err);
@@ -46,7 +46,7 @@ function AddDepartmentFormComponent({ t }) {
   useEffect(() => {
     if (id) {
       console.log(id);
-      departmentService.getDepartmentById(id).then((res) => {
+      groupOfRolesService.getGroupOfRoleById(id).then((res) => {
         setData(res.data);
         console.log(res.data);
       });
@@ -62,11 +62,8 @@ function AddDepartmentFormComponent({ t }) {
       <div className="space-y-12 sm:space-y-16">
         <div>
           <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Department Information
+            {id ? t(`group_of_roles_edit`) : t(`group_of_roles_add`)}
           </h2>
-          <p className="max-w-2xl mt-1 text-sm leading-6 text-gray-600">
-            Use a permanent data.
-          </p>
 
           <div className="pb-12 mt-10 space-y-8 border-b border-gray-900/10 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0">
             <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
@@ -74,7 +71,7 @@ function AddDepartmentFormComponent({ t }) {
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
               >
-                Name
+                {t(`name`)}
               </label>
               <div className="mt-2 sm:col-span-2 sm:mt-0">
                 <input
@@ -94,7 +91,7 @@ function AddDepartmentFormComponent({ t }) {
                 htmlFor="about"
                 className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
               >
-                Description
+                {t(`description`)}
               </label>
               <div className="mt-2 sm:col-span-2 sm:mt-0">
                 <textarea
@@ -105,9 +102,6 @@ function AddDepartmentFormComponent({ t }) {
                   className="block w-full max-w-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={data.description}
                 />
-                <p className="mt-3 text-sm leading-6 text-gray-600">
-                  Write a few sentences about department.
-                </p>
               </div>
             </div>
           </div>
@@ -120,16 +114,16 @@ function AddDepartmentFormComponent({ t }) {
           onClick={() => onCancel()}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
-          Cancel
+          {t("cancel")}
         </button>
         <button
           type="submit"
           className="inline-flex justify-center px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Save
+          {t(`save`)}
         </button>
       </div>
     </form>
   );
 }
-export default withTranslation()(AddDepartmentFormComponent);
+export default withTranslation()(AddOrEditGroupOfRolesLayout);

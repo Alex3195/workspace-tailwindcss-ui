@@ -10,6 +10,7 @@
   "sidebar_menu_meeting": "Встречи",
   "sidebar_menu_setting": "Настройки",
   "sidebar_menu_roles": "Роли пользователей",
+  "sidebar_menu_group_of_roles": "Группа ролей",
   "sidebar_menu_access_control": "Управление доступом",
   "sidebar_menu_finance": "Финансы",
   "sidebar_menu_notifications": "Уведомление",
@@ -17,5 +18,18 @@
   "sidebar_menu_report": "Отчеты",
   "sidebar_menu_task": "Задачи",
   "title_dashboard":"Wayll Workspace помогает эффективно управлять компанией",
-  "under_title_dashboard":"Wayll Workspace - надежный инструмент повышения эффективности бизнеса"
+  "under_title_dashboard":"Wayll Workspace - надежный инструмент повышения эффективности бизнеса",
+  "group_of_roles_add":"Добавлять группе ролей",
+  "group_of_roles_edit":"Редактировать группе ролей",
+  "name":"Названия",
+  "description":"Описание",
+  "no_data":"Нет доступных данных",
+  "search":"Поиск",
+  "list_of_projects":"Список проектов",
+  "action":"Действия",
+  "add":"Добавлять",
+  "cancel":"Отмена",
+  "save":"Сохранять",
+  "department_add": "Создать отдел",
+  "department_edit": "Редактировать отдел"
 }

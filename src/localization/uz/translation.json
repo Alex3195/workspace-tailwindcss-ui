@@ -10,6 +10,7 @@
   "sidebar_menu_meeting": "Uchrashuvlar",
   "sidebar_menu_setting": "Sozlamalar",
   "sidebar_menu_roles": "Foydalanuvchi rollari",
+  "sidebar_menu_group_of_roles": "Rollar guruhi",
   "sidebar_menu_access_control": "Kirish nazorati",
   "sidebar_menu_finance": "Moliya",
   "sidebar_menu_notifications": "Bildirishnomalar",
@@ -17,5 +18,18 @@
   "sidebar_menu_report": "Hisobot",
   "sidebar_menu_task": "Vazifalar",
   "title_dashboard": "Wayll Workspace kompaniyangizni samarali boshqarishga yordam beradi",
-  "under_title_dashboard": "Wayll Workspace - biznes samaradorligini oshirish uchun ishonchli vosita"
+  "under_title_dashboard": "Wayll Workspace - biznes samaradorligini oshirish uchun ishonchli vosita",
+  "group_of_roles_add": "Role guruhlari",
+  "group_of_roles_edit": "Role guruhlarini tahrirlash",
+  "name": "Nomi",
+  "description": "Tavsif",
+  "no_data": "Mavjud maʼlumotlar yoʻq",
+  "search": "Izlash",
+  "list_of_projects": "Loyihalar ro'yxati",
+  "action": "Amallar",
+  "add": "Qo'shish",
+  "cancel": "Bekor qilish",
+  "save": "Saqlash",
+  "department_add": "Bo'lim yaratish",
+  "department_edit": "Bo'lim tahrirlash"
 }

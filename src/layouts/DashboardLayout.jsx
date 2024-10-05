@@ -1,5 +1,12 @@
+import {
+  BanknotesIcon,
+  BuildingOffice2Icon,
+  ChartPieIcon,
+  PresentationChartBarIcon,
+  SignalIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
 import { withTranslation } from "react-i18next";
-
 const posts = [
   {
     id: 1,
@@ -9,6 +16,7 @@ const posts = [
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
+    icon: <BuildingOffice2Icon />,
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
@@ -28,6 +36,7 @@ const posts = [
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
+    icon: <PresentationChartBarIcon />,
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
@@ -47,6 +56,7 @@ const posts = [
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
+    icon: <UserGroupIcon />,
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
@@ -67,6 +77,7 @@ const posts = [
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
     date: "Mar 16, 2020",
+    icon: <SignalIcon />,
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
     author: {
@@ -86,6 +97,7 @@ const posts = [
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
     date: "Mar 16, 2020",
+    icon: <BanknotesIcon />,
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
     author: {
@@ -105,6 +117,7 @@ const posts = [
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
     date: "Mar 16, 2020",
+    icon: <ChartPieIcon />,
     datetime: "2020-03-16",
     category: { title: "Marketing", href: "#" },
     author: {
@@ -143,6 +156,7 @@ function DashboardLayout({ t }) {
                     src={post.imageUrl}
                     className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                   />
+                  {/* {post.icon} */}
                   <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
                 </div>
                 <div className="max-w-xl">

@@ -25,6 +25,19 @@
   "sidebar_menu_calendar": "Calendar",
   "sidebar_menu_report": "Reports",
   "sidebar_menu_task": "Tasks",
+  "sidebar_menu_group_of_roles": "Group of roles",
   "title_dashboard":"Wayll Workspace helps you manage your company effectively",
-  "under_title_dashboard":"Wayll Workspace is a reliable tool for increasing business efficiency"
+  "under_title_dashboard":"Wayll Workspace is a reliable tool for increasing business efficiency",
+  "group_of_roles_info":"Group of roles info",
+  "name":"Name",
+  "description":"Description",
+  "no_data":"No available data",
+  "search":"Search",
+  "list_of_projects":"List of projects",
+  "action":"Actions",
+  "add":"Add",
+  "cancel":"Cancel",
+  "save":"Save",
+  "department_add": "Department creation",
+  "department_edit": "Edit department"
 }

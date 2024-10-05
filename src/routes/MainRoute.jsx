@@ -12,6 +12,8 @@ import ProjectLayout from "../layouts/ProjectLayout";
 import RolesLayout from "../layouts/RolesLayout";
 import AddRolesLayout from "../layouts/AddRolesLayout";
 import SpecialDashBoardLayout from "../layouts/SpecialDashBoardLayout";
+import GroupOfRolesLayout from "../layouts/GroupOfRolesLayout";
+import AddOrEditGroupOfRolesLayout from "../layouts/AddOrEditGroupOfRolesLayout";
 const MainRoutes = () => {
   return (
     <Routes>
@@ -32,6 +34,9 @@ const MainRoutes = () => {
       <Route path="/role/add" element={<AddRolesLayout />} />
       <Route path="/role/edit/:id" element={<AddDepartmentLayout />} />
       <Route path="/special" element={<SpecialDashBoardLayout />} />
+      <Route path="/group-of-role" element={<GroupOfRolesLayout />} />
+      <Route path="/group-of-role/add" element={<AddOrEditGroupOfRolesLayout />}/>
+      <Route path="/group-of-role/edit/:id" element={<AddOrEditGroupOfRolesLayout />}/>
     </Routes>
   );
 };

@@ -27,6 +27,7 @@ import logo from "../assets/img/wayll_rounded.png";
 const navigation = [
   { name: "sidebar_menu_dashboard", to: "/", icon: HomeIcon },
   { name: "sidebar_menu_roles", to: "/role", icon: RectangleGroupIcon },
+  { name: "sidebar_menu_group_of_roles", to: "/group-of-role", icon: RectangleGroupIcon },
   {
     name: "sidebar_menu_access_control",
     to: "/access-control",
